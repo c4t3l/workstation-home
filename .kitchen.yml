@@ -1,0 +1,35 @@
+---
+driver:
+  name: qemu
+  memory: 4096
+  cpus: 4
+  bios: /usr/share/edk2/ovmf/OVMF_CODE.fd
+
+
+provisioner:
+  name: ansible_playbook
+  roles_path: roles
+  ansible_verbose: false
+  require_chef_for_busser: false
+  hosts: test-kitchen
+
+platforms:
+  - name: f42
+    driver:
+      image:
+        - file: /var/lib/libvirt/images/Fedora-KDE.x86_64-42.qcow2
+      display: <%= ENV['KDISPLAY'] || 'none' %>
+
+lifecycle:
+  post_create:
+    - remote: sudo dnf -y install ansible-collection-community-general
+
+suites:
+  - name: kde
+
+verifier:
+  name: shell
+  command: >
+    py.test -vvvrxXs --color=yes
+    --hosts="paramiko://${KITCHEN_USERNAME}@${KITCHEN_HOSTNAME}:${KITCHEN_PORT}?ssh_identity_file=${KITCHEN_SSH_KEY}"
+    --sudo test/integration/${KITCHEN_SUITE}

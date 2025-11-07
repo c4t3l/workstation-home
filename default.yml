@@ -1,0 +1,8 @@
+---
+- name: Deploy KDE Workstation
+  hosts: test-kitchen
+  become: true
+  roles:
+    - repos
+    - install
+    - desktop
