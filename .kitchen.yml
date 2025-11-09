@@ -4,7 +4,6 @@ driver:
   memory: 4096
   cpus: 4
   bios: /usr/share/edk2/ovmf/OVMF_CODE.fd
-  hostname: kitchen
 
 
 provisioner:
@@ -13,8 +12,9 @@ provisioner:
   additional_copy_path: vars
   ansible_verbose: false
   ansible_vault_password_file: .ansible-password.txt
+  ansible_check: false
   require_chef_for_busser: false
-  hosts: test-kitchen
+  hosts: desktop
 
 platforms:
   - name: f42

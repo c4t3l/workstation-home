@@ -1,5 +1,6 @@
 # Configure desktop theme etc
 ---
 
-- include_tasks: global_config.yml
+- include_tasks: global.yml
 - include_tasks: user.yml
+- include_tasks: local.yml

@@ -2,9 +2,6 @@
 # Run tests for desktop role
 
 
-import sys
-import os
-
 from docitlib import read_file
 
 KDEDEFAULTDIR = "/usr/share/kde-settings/kde-profile/default/xdg"

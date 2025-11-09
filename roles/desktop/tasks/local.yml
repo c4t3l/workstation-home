@@ -1,0 +1,23 @@
+# Deploy KDE user configs
+---
+
+- name: Deploy konsolerc config
+  ansible.builtin.copy:
+    src: files/konsolerc
+    dest: "/home/{{ user['username'] }}/.config/konsolerc"
+    owner: "{{ user['username'] }}"
+    group: "{{ user['username'] }}"
+
+- name: Create konsole config dir
+  ansible.builtin.file:
+    path: /home/rcallicotte/.local/share/konsole/
+    owner: "{{ user['username'] }}"
+    group: "{{ user['username'] }}"
+    state: directory
+
+- name: Deploy konsole profile
+  ansible.builtin.copy:
+    src: files/green.profile
+    dest: "/home/{{ user['username'] }}/.local/share/konsole/green.profile"
+    owner: "{{ user['username'] }}"
+    group: "{{ user['username'] }}"
