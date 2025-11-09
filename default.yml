@@ -1,7 +1,10 @@
 ---
 - name: Deploy KDE Workstation
-  hosts: test-kitchen
+  hosts: all
+  gather_facts: false
   become: true
+  vars_files:
+    - vars/desktop.yml
   roles:
     - repos
     - install

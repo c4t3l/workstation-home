@@ -1,34 +1,34 @@
 # Create user task
 ---
 
-- name: Create robby user account
+- name: Create main user account
   ansible.builtin.user:
-    name: rcallicotte
-    comment: Robby Callicotte
+    name: "{{ user['username'] }}"
+    comment: "{{ user['comment'] }}"
     create_home: true
     groups:
       - wheel
+      - mock
     append: true
-    password: |
-      '$6$4Rdss32W.ID4DVp1$UfA3Khl7g8JlgIzYsE/pI6IWuLRPrZ6CYVqvD5sU7VsIga9VJG.ykYh5GawJ1mFakWVGvE3njlVXONSgJseDJ.'
+    password: "{{ user['password'] | password_hash('sha512', 'salt') }}"
 
 - name: Deploy konsolerc config
   ansible.builtin.copy:
     src: files/konsolerc
-    dest: /home/rcallicotte/.config/konsolerc
-    owner: rcallicotte
-    group: rcallicotte
+    dest: "/home/{{ user['username'] }}/.config/konsolerc"
+    owner: "{{ user['username'] }}"
+    group: "{{ user['username'] }}"
 
 - name: Create konsole config dir
   ansible.builtin.file:
     path: /home/rcallicotte/.local/share/konsole/
-    owner: rcallicotte
-    group: rcallicotte
+    owner: "{{ user['username'] }}"
+    group: "{{ user['username'] }}"
     state: directory
 
 - name: Deploy konsole profile
   ansible.builtin.copy:
     src: files/green.profile
-    dest: /home/rcallicotte/.local/share/konsole/green.profile
-    owner: rcallicotte
-    group: rcallicotte
+    dest: "/home/{{ user['username'] }}/.local/share/konsole/green.profile"
+    owner: "{{ user['username'] }}"
+    group: "{{ user['username'] }}"

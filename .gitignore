@@ -1,3 +1,5 @@
+.ansible-password.txt
 *.swp
 *.pyc
 *.kitchen/
+
