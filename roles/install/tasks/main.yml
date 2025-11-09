@@ -23,5 +23,6 @@
       - rubygem-test-kitchen
       - s3cmd
       - stow
+      - vimde
       - yamllint
       - zsh

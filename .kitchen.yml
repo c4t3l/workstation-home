@@ -27,9 +27,17 @@ platforms:
       image: Fedora-KDE.x86_64-43.qcow2
       display: <%= ENV['KDISPLAY'] || 'none' %>
 
+  - name: rawhide
+    driver:
+      image: Fedora-KDE.x86_64-Rawhide.qcow2
+      display: <%= ENV['KDISPLAY'] || 'none' %>
+
 lifecycle:
   post_create:
-    - remote: "sudo dnf -y install ansible-collection-community-general python3-passlib"
+    - remote: >
+        sudo dnf -y install
+        ansible-collection-community-general
+        python3-passlib
 
 suites:
   - name: kde
