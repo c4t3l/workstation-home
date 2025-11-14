@@ -1,6 +1,9 @@
 # test_desktop.py
 # Run tests for desktop role
 
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from docitlib import read_file
 

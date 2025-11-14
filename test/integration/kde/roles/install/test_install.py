@@ -4,7 +4,12 @@
 roles/install/tasks/main.yml
 """
 
+import os
 import pytest
+import sys
+
+# docitlib path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from docitlib import read_yaml
 
 
