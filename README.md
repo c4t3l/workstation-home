@@ -24,6 +24,10 @@ Suggestions:
 The usual way: `kitchen test`
 Quick way: `kitchen verify`
 Setup: `kitchen converge`
+With sdl: `DPY=sdl kitchen converge`
+With gtk: `DPY=gtk kitchen converge`
+
+You must have sdl and/or gtk installed to display graphical console.
 
 ## References
 

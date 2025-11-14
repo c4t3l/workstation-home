@@ -20,17 +20,17 @@ platforms:
   - name: f42
     driver:
       image: Fedora-KDE.x86_64-42.qcow2
-      display: <%= ENV['KDISPLAY'] || 'none' %>
+      display: <%= ENV['DPY'] || 'none' %>
 
   - name: f43
     driver:
       image: Fedora-KDE.x86_64-43.qcow2
-      display: <%= ENV['KDISPLAY'] || 'none' %>
+      display: <%= ENV['DPY'] || 'none' %>
 
   - name: rawhide
     driver:
       image: Fedora-KDE.x86_64-Rawhide.qcow2
-      display: <%= ENV['KDISPLAY'] || 'none' %>
+      display: <%= ENV['DPY'] || 'none' %>
 
 lifecycle:
   post_create:
