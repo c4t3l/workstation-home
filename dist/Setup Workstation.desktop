@@ -1,0 +1,18 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=/opt/setup-workstation.sh
+GenericName[en_US]=
+GenericName=
+Icon=fedora-logo-icon
+MimeType=
+Name[en_US]=Setup Workstation
+Name=Setup Workstation
+Path=
+StartupNotify=false
+Terminal=true
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=root
+
