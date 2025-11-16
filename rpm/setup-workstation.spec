@@ -6,8 +6,13 @@ Summary:        Ansible-based Workstation Setup
 License:        MIT
 URL:            https://github.com/c4t3l/setup-workstation
 Source0:        %{url}/archive/%{version}/setup-workstation-%{version}.tar.gz
+Source10:       rpm/setup-workstation.sysusers
 
 BuildRequires:  ansible
+BuildRequires:  systemd-rpm-macros
+%{?sysusers_requires_compat}
+
+
 Requires:       ansible
 Requires:       ansible-collection-community-general
 
@@ -31,17 +36,27 @@ install -Dpm 0644 -t %{buildroot}/opt/%{name}/vars vars/*
 cp -prv roles %{buildroot}/opt/%{name}/.
 
 install -Dpm 0755 -t %{buildroot}/opt/%{name}/dist dist/*
-%dnl install -Dpm 0755 -t %{buildroot}/opt/%{name} %{name}.desktop
+install -Dpm 0644 %{S:10} %{buildroot}%{_sysusersdir}/%{name}.conf
+
+
+%pre
+%sysusers_create_compat %{S:10}
+
+
+%post
+# Create symlink for kroot one-click install
+ln -s /opt/%{name}.desktop /home/kroot/Desktop/.
 
 
 %check
 ansible-playbook -vvvv --syntax-check --inventory hosts default.yml 
 
+
 %files
 %license LICENSE
 %doc README.md
 /opt/setup-workstation/
-
+%{_sysusersdir}/%{name}.conf
 
 
 %changelog
