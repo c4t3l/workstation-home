@@ -35,7 +35,7 @@ install -Dpm 0755 -t %{buildroot}/opt/%{name}/dist dist/*
 
 
 %check
-ansible-playbook --check --inventory hosts default.yml 
+ansible-playbook -vvvv --syntax-check --inventory hosts default.yml 
 
 %files
 %license LICENSE
