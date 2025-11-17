@@ -1,6 +1,6 @@
 Name:           setup-workstation
-Version:        2025.11.2
-Release:        2%{?dist}
+Version:        2025.11.3
+Release:        1%{?dist}
 Summary:        Ansible-based Workstation Setup
 
 License:        MIT
@@ -63,6 +63,9 @@ ansible-playbook -vvvv --syntax-check --inventory hosts default.yml
 
 
 %changelog
+* Mon Nov 17 2025 Robby Callicotte <rcallicotte@fedoraproject.org> - 2025.11.3-1
+- Update to 2025.11.3
+
 * Mon Nov 17 2025 Robby Callicotte <rcallicotte@fedoraproject.org> - 2025.11.2-2
 - Fix post install links
 
