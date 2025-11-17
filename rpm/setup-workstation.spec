@@ -35,7 +35,6 @@ install -Dpm 0644 -t %{buildroot}/opt/%{name}/vars vars/*
 cp -prv roles %{buildroot}/opt/%{name}/.
 
 install -Dpm 0755 -t %{buildroot}/opt/%{name}/dist dist/*
-install -Dpm 0644 %{S:10} %{buildroot}%{_sysusersdir}/%{name}.conf
 
 
 %check
@@ -46,7 +45,6 @@ ansible-playbook -vvvv --syntax-check --inventory hosts default.yml
 %license LICENSE
 %doc README.md
 /opt/setup-workstation/
-%{_sysusersdir}/%{name}.conf
 
 
 %changelog
