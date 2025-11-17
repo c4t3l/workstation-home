@@ -1,5 +1,5 @@
 Name:           setup-workstation
-Version:        2025.11.3
+Version:        2025.11.4
 Release:        1%{?dist}
 Summary:        Ansible-based Workstation Setup
 
@@ -63,6 +63,9 @@ ansible-playbook -vvvv --syntax-check --inventory hosts default.yml
 
 
 %changelog
+* Mon Nov 17 2025 Robby Callicotte <rcallicotte@fedoraproject.org> - 2025.11.4-1
+- Update to 2025.11.4
+
 * Mon Nov 17 2025 Robby Callicotte <rcallicotte@fedoraproject.org> - 2025.11.3-1
 - Update to 2025.11.3
 
